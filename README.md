@@ -12,6 +12,16 @@ In these situations you must run this proxy.
 
 It's just that simple folks :)
 
+## Running
+
+```shell
+# Download api.crt from current Rancher Server
+curl http://${RANCHER_SERVER}/v1/scripts/api.crt > api.crt
+
+# Launch host proxy
+docker run -d --restart=always -v $(pwd)/api.crt:/api.crt -p 8081:8080 rancher/host-proxy
+```
+
 # License
 Copyright (c) 2014-2015 [Rancher Labs, Inc.](http://rancher.com)
 
