@@ -1,0 +1,60 @@
+{
+	"ImportPath": "github.com/rancherio/host-proxy",
+	"GoVersion": "go1.4.1",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.6.5-2-geb84da5",
+			"Rev": "eb84da520d0bfecda7a9288107ec991b4ebcedb4"
+		},
+		{
+			"ImportPath": "github.com/codegangsta/cli",
+			"Comment": "1.2.0-74-g50c77ec",
+			"Rev": "50c77ecec0068c9aef9d90ae0fd0fdf410041da3"
+		},
+		{
+			"ImportPath": "github.com/dgrijalva/jwt-go",
+			"Comment": "v2.2.0-15-g61124b6",
+			"Rev": "61124b62ad244d655f87d944aefaa2ae5a0d2f16"
+		},
+		{
+			"ImportPath": "github.com/golang/glog",
+			"Rev": "44145f04b68cf362d9c4df2182967c2275eaefed"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Rev": "215affda49addc4c8ef7e2534915df2c8c35c6cd"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Rev": "8a875a034c69b940914d83ea03d3f1299b4d094b"
+		},
+		{
+			"ImportPath": "github.com/gorilla/websocket",
+			"Rev": "ab5b3a61f5b6aa323d66ece457334396c4ccdd03"
+		},
+		{
+			"ImportPath": "github.com/rakyll/globalconf",
+			"Rev": "415abc325023f1a00cd2d9fa512e0e71745791a2"
+		},
+		{
+			"ImportPath": "github.com/rakyll/goini",
+			"Rev": "907cca0f578a5316fb864ec6992dc3d9730ec58c"
+		},
+		{
+			"ImportPath": "github.com/rancherio/host-api/app/common",
+			"Comment": "v0.5.0-3-g574426d",
+			"Rev": "574426d269a22c7063e907078fdff6f10678788e"
+		},
+		{
+			"ImportPath": "github.com/rancherio/host-api/auth",
+			"Comment": "v0.5.0-3-g574426d",
+			"Rev": "574426d269a22c7063e907078fdff6f10678788e"
+		},
+		{
+			"ImportPath": "github.com/rancherio/host-api/config",
+			"Comment": "v0.5.0-3-g574426d",
+			"Rev": "574426d269a22c7063e907078fdff6f10678788e"
+		}
+	]
+}
