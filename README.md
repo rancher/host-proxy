@@ -14,13 +14,18 @@ It's just that simple folks :)
 
 ## Running
 
+Start proxy
+
 ```shell
 # Download api.crt from current Rancher Server
-curl http://${RANCHER_SERVER}/v1/scripts/api.crt > api.crt
+curl -sL http://${RANCHER_SERVER}/v1/scripts/api.crt > api.crt
 
 # Launch host proxy
 docker run -d --restart=always -v $(pwd)/api.crt:/api.crt -p 8081:8080 rancher/host-proxy
 ```
+
+When registering a node ensure that you add `-e CATTLE_HOST_API_PROXY=${PROXY_SERVER}:8081` to the
+`docker run ... rancher/agent` command.
 
 # License
 Copyright (c) 2014-2015 [Rancher Labs, Inc.](http://rancher.com)
