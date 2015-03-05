@@ -1,6 +1,9 @@
 #!/bin/bash
-
 set -e
+
+if [ -f ./build/bootstrap.envs ];then
+    . ./build/bootstrap.envs
+fi
 
 result=$(find . -name "*.go" | grep -v ./Godeps | xargs gofmt -s -l)
 for i in $result; do

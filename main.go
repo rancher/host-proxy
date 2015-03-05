@@ -15,12 +15,16 @@ import (
 	"github.com/rancherio/host-proxy/proxy"
 )
 
+const (
+	VERSION string = "0.1.0"
+)
+
 func main() {
 	app := cli.NewApp()
 	app.Email = ""
 	app.Author = "Rancher Labs, Inc."
 	app.Action = runApp
-	app.Version = ""
+	app.Version = VERSION
 
 	app.Flags = []cli.Flag{
 		cli.StringFlag{

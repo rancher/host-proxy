@@ -1,9 +1,10 @@
 #!/bin/bash
+set -e
 
 cd $(dirname $0)/..
 
 mkdir -p dist/artifacts
 
-tar cJf ../dist/artifacts/host-proxy.tar.xz -C bin host-proxy
+tar cJf dist/artifacts/host-proxy.tar.xz -C bin host-proxy
 
 echo Created dist/artifacts/host-proxy.tar.xz
