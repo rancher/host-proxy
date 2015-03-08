@@ -15,7 +15,7 @@ install_go()
 
 mkdir -p ./build
 
-if [[ ! $(command -v go) && ! -x /gopath/bin/go ]]; then
+if [[ ! $(command -v go) && ! -x /goroot/bin/go ]]; then
     echo "Going to try installing Go..."
     install_go
 fi
