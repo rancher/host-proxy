@@ -5,7 +5,10 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"sync"
 	"syscall"
+
+	log "github.com/Sirupsen/logrus"
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
@@ -60,31 +63,68 @@ func Serve(resp http.ResponseWriter, req *http.Request) error {
 		return err
 	}
 
-	defer clientConn.Close()
-
 	conn, err := upgrader.Upgrade(resp, req, nil)
 	if err != nil {
 		return err
 	}
 
+	log.Infof("%s : starting connection", req.RemoteAddr)
+
+	wg := &sync.WaitGroup{}
+	wg.Add(1)
+
+	cleanup := func() {
+		conn.Close()
+		clientConn.Close()
+		wg.Done()
+	}
+
+	go func() {
+		defer cleanup()
+
+		err := copyData(conn, clientConn)
+		if err != nil {
+			log.Infof("%s : error in output stream : %v", req.RemoteAddr, err)
+		}
+	}()
+
+	wg.Add(1)
+	go func() {
+		defer cleanup()
+
+		err := copyData(clientConn, conn)
+		if err != nil {
+			log.Infof("%s : error in input stream : %v", req.RemoteAddr, err)
+		}
+	}()
+
+	wg.Wait()
+
+	log.Infof("%s : closing connection", req.RemoteAddr)
+	return nil
+}
+
+func copyData(dst *websocket.Conn, src *websocket.Conn) error {
 	for {
-		messageType, bytes, err := clientConn.ReadMessage()
+		messageType, bytes, err := src.ReadMessage()
 		if err == io.EOF {
 			return nil
 		} else if err != nil {
 			return err
 		}
 
-		err = conn.WriteMessage(messageType, bytes)
+		err = dst.WriteMessage(messageType, bytes)
 		if netErr, ok := err.(*net.OpError); ok && netErr.Err == syscall.EPIPE {
 			// This is a broken pipe error which we can safely ignore
+			return nil
+		} else if err == io.EOF {
 			return nil
 		} else if err != nil {
 			return err
 		}
 	}
 
-	return err
+	return nil
 }
 
 func init() {
