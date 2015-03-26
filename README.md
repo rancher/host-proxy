@@ -27,8 +27,8 @@ docker run -d --restart=always -v $(pwd)/api.crt:/api.crt -p 8081:8080 rancher/h
 When registering a node ensure that you add `-e CATTLE_HOST_API_PROXY=${PROXY_SERVER}:8081` to the
 `docker run ... rancher/agent` command.
 
-## Bugs & Issues
-Please submit bugs and issues to [rancherio/rancher](//github.com/rancherio/rancher/issues) with a title starting with `[Host-Proxy] `.
+## Contact
+For bugs, questions, comments, corrections, suggestions, etc., open an issue in [rancherio/rancher](//github.com/rancherio/rancher/issues) with a title starting with `[Host-Proxy] `.
 
 Or just [click here](//github.com/rancherio/rancher/issues/new?title=%5BHost-Proxy%5D%20) to create a new issue.
 
