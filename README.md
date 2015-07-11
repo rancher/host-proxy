@@ -28,9 +28,9 @@ When registering a node ensure that you add `-e CATTLE_HOST_API_PROXY=${PROXY_SE
 `docker run ... rancher/agent` command.
 
 ## Contact
-For bugs, questions, comments, corrections, suggestions, etc., open an issue in [rancherio/rancher](//github.com/rancherio/rancher/issues) with a title starting with `[Host-Proxy] `.
+For bugs, questions, comments, corrections, suggestions, etc., open an issue in [rancher/rancher](//github.com/rancher/rancher/issues) with a title starting with `[Host-Proxy] `.
 
-Or just [click here](//github.com/rancherio/rancher/issues/new?title=%5BHost-Proxy%5D%20) to create a new issue.
+Or just [click here](//github.com/rancher/rancher/issues/new?title=%5BHost-Proxy%5D%20) to create a new issue.
 
 
 # License
